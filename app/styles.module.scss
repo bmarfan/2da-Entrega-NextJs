@@ -1,0 +1,59 @@
+.boxContainer{
+    background: #fff;
+    padding: 2.5rem;
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 0.5rem;
+}
+.boxContainerFlex{
+    background: #fff;
+    padding: 2rem;
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+.titulos{
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.tituloSm{
+    @extend .titulos;
+    text-align: center;
+    
+}
+.boton{
+    background: #f7f7f7;
+    padding: 7px;
+    border-radius: 8px;
+    color: #555;
+    width: 100%;
+    border: 1px solid rgba(0,0,0, .1);
+    overflow: hidden;
+}
+.select{
+    width: 100%;
+    padding: 10px;
+    border: var(--accent-light) 1px solid;
+    color: rgb(107, 114, 128);
+    font-size: 12px;
+    margin-bottom: 6px;
+    border-radius: 5px
+}
+.datos{
+    background: var(--accent-light);
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(107, 114, 128);
+    text-transform: uppercase;
+    font-size: 10px;
+    margin-right: 10px;
+    border: 1px solid rgba(0,0,0, .05)
+}
+.text{
+    font-size: 13px;
+    text-align: justify;
+}
