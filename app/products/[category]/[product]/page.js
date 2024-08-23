@@ -6,7 +6,7 @@ export async function generateStaticParams() {
    
     return products.map((product) => ({
       category: product.category,
-      product: product.id,
+      product: product.slug,
     }))
   }
   

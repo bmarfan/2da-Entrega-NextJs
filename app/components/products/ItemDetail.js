@@ -11,7 +11,7 @@ const ItemDetail = ({name, image, price, selectTitle, select, description, id}) 
     <div className={styles.boxContainer}>
       <div className='flex justify-between container gap-20'>
         <div className='w-[50%]'>
-            <Image
+            <img
                 src={image}
                 width={700}
                 height={700}

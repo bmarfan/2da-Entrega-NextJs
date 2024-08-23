@@ -7,7 +7,7 @@ import styles from '../../styles.module.scss'
 const ItemCard = ({items}) => {
   return (
     <div className='p-5 w-[250px] bg-white border border-black/10 rounded-lg'>
-        <Image
+        <img
             src={items.image}
             alt={items.name}
             width={250}
@@ -18,7 +18,7 @@ const ItemCard = ({items}) => {
         <div className='text-right py-2'>${items.price}</div>
 
       <button type='buttton' className={`hvr-sweep-to-right ${styles.boton}`}>
-        <a href={'/products/' + items.type + '/' + items.id}>Ver Detalle</a>
+        <a href={'/products/' + items.type + '/' + items.slug}>Ver Detalle</a>
       </button>
       
     </div>

@@ -1,4 +1,20 @@
 import { NextResponse } from "next/server";
+import { getDoc, doc } from "firebase/firestore";
+import { db } from "@/firebase/config";
+
+
+export async function GET(request, { params }) {
+    const { product } = params
+
+    const docRef = doc(db, 'products', product)
+    const docSnapshot = await getDoc(docRef)
+
+    return NextResponse.json(docSnapshot.data())
+}
+
+
+//MOCKDATA
+/*import { NextResponse } from "next/server";
 import { dataProducts } from "@/app/dataProducts";
 
 const sleep = (timer) => {
@@ -14,4 +30,4 @@ export async function GET(request, { params }) {
 
     await sleep(1000)
     return NextResponse.json(data)
-}
+}*/

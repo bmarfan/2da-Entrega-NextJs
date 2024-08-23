@@ -12,7 +12,7 @@ const Menu = async () => {
     return (
       
       <nav className='flex gap-3 mr-10'>
-        {data.map((menu, index) => {
+        {data.sort(((a, b) => a.value - b.value)).map((menu, index) => {
             return <MenuList key={index} item={menu} depthLevel={depthLevel}/>
         })}
       </nav>

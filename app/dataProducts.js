@@ -1,6 +1,6 @@
 export const dataProducts = [
     {
-        id: '01',
+        id: 'tsuki-falling-star',
         name: 'Tsuki ‘Falling Star’ Limited Edition Bullet Journal',
         image: '/products/01.jpg',
         type: 'notebooks',
