@@ -16,15 +16,15 @@ export default function RootLayout({ children }) {
   return (
         <html lang="en">
             <body className={inter.className}>
-                <div className="grid grid-rows-layout-principal w-full min-h-screen">
-                    <Navbar/>
-                    <CartProvider>
+                <CartProvider>
+                    <div className="grid grid-rows-layout-principal w-full min-h-screen">
+                        <Navbar/>
                         <main className="w-full justify-self-center flex justify-center flex-col items-center">
                             {children}
                         </main>
-                    </CartProvider>
-                    <FooterContainer/>
-                </div>
+                        <FooterContainer/>
+                    </div>
+                </CartProvider>
             </body>
         </html>
   );

@@ -11,7 +11,6 @@ const ItemDetailContainer = async ({product, category}) => {
   return (
     <div className='w-full p-10'>
       <ItemDetail {...item}/>
-      <AddtoCart {...item}/>
     </div>
   )
 }
