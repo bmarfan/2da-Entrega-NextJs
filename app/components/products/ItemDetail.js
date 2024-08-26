@@ -5,7 +5,6 @@ import Select from '../utilities/Select'
 import Counter from '../utilities/Counter'
 import TextBody from '../utilities/TextBody'
 import AddtoCart from '../utilities/AddtoCart'
-import QuantitySelector from './QuantitySelector'
 
 const ItemDetail = ({name, image, price, selectTitle, select, description, slug, stock, id}) => {
 

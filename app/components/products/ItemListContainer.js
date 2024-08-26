@@ -10,7 +10,7 @@ const ItemListContainer = async ( {category} ) => {
     return (
         <div className='relative' id='ItemListContainer'>
           <div className='bg-background2 p-3 rounded-xl'>
-            <ul className='flex flex-wrap justify-around gap-3'>
+            <ul className='flex flex-wrap gap-3 p-5'>
                 
                     {
                         items.map((item, index) => {
