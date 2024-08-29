@@ -11,8 +11,10 @@ const ItemDetail = ({name, image, price, selectTitle, select, description, slug,
     const item = {
         name: name,
         price: price,
-        slug: slug
+        id: slug,
+        image: image,
     }
+
   return (
     <div className={styles.boxContainer}>
       <div className='flex justify-between container gap-20'>
@@ -28,10 +30,11 @@ const ItemDetail = ({name, image, price, selectTitle, select, description, slug,
             <h1 className='text-[22px] font-extrabold uppercase text-accent'>{name}</h1>
             <span className='text-[15px]'>${price}</span>
 
-            <div className='mt-5 flex items-start'>
+            {/* <div className='mt-5 flex items-start'>
                 <label className={styles.datos}>{selectTitle}</label>
                 <Select title={selectTitle} value={select}/>
-            </div>
+            </div> */}
+            
             <div className='mt-5 text-[10px] flex gap-5'>
                 <Counter stock={stock} item={item}/>
             </div>

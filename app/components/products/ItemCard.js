@@ -18,7 +18,7 @@ const ItemCard = ({items}) => {
         <div className='text-right py-2'>${items.price}</div>
 
       <button type='buttton' className={`hvr-sweep-to-right ${styles.boton}`}>
-        <a href={'/products/' + items.type + '/' + items.slug}>Ver Detalle</a>
+        <Link href={'/products/' + items.type + '/' + items.slug}>Ver Detalle</Link>
       </button>
       
     </div>

@@ -3,6 +3,7 @@ import React from 'react'
 import { useState, useEffect, useRef } from 'react';
 import { ArrowSquareDown } from 'iconsax-react';
 import MenuDropdown from './MenuDropdown';
+import Link from 'next/link';
 
 const MenuList = ({item, depthLevel}) => {
     const [open, setOpen] = useState(false);
@@ -14,18 +15,21 @@ const MenuList = ({item, depthLevel}) => {
                 setOpen(false)
             }
         }
-        document.addEventListener("mousedown", handler);
-        document.addEventListener("touchstart", handler);
-
-        return() => {
-            document.removeEventListener("mousedown", handler);
-            document.removeEventListener("touchstart", handler);
-        }
+       
     }, [open])
+    const onMouseEnter = () => {
+        setOpen(true);
+       };
+       
+       const onMouseLeave = () => {
+        setOpen(false);
+       };
+
   return (
+    <>
     <div>
         {item.submenu ?  (
-            <>
+            <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className='h-20 flex items-center relative'>
                 <button 
                     type='button' 
                     aria-haspopup='menu'
@@ -40,13 +44,15 @@ const MenuList = ({item, depthLevel}) => {
                     submenus={item.submenu}
                     open={open}
                     depthLevel={depthLevel}
+
                 />
-            </>
+            </div>
         ) : (
-            <a href={item.href}>{item.name}</a>
+            <Link href={item.href} className='h-20 flex items-center'>{item.name}</Link>
         )}
-      
     </div>
+    <div className={`${open ? 'opacity-100 fixed inset-x-0 bg-black/50 h-full' : 'opacity-0 md:opacity-100 fixed'}  h-full z-30 fixed top-20`}></div>
+    </>
   )
 }
 

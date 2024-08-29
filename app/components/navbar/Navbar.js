@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import Menu from './Menu'
+import CartWidget from '../cart/CartWidget'
 
 const Navbar = () => {
   return (
@@ -14,8 +15,9 @@ const Navbar = () => {
                 alt='CherryBooks'
             />
         </div>
-        <div>
+        <div className='flex gap-3 items-center'>
             <Menu/>
+            <CartWidget/>
         </div>
       
     </div>

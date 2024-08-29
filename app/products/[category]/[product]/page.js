@@ -9,10 +9,17 @@ export async function generateStaticParams() {
       product: product.slug,
     }))
   }
+
+  export async function generateMetadata({ params }) {
+    return {
+      title: ` Cherrybooks -  ${params.product}`
+    }
+}
   
   export default function Page({ params }) {
     const product = params.product
     const category = params.category
+
     return(
         <>
         <ItemDetailContainer product={product} category={category}/>
