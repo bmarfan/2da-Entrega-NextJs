@@ -58,3 +58,46 @@
     font-size: 13px;
     text-align: justify;
 }
+
+
+//
+.titleColor{
+    letter-spacing: -0.05em;
+    font-weight: 900;
+    font-size: 6em;
+    text-transform: lowercase;
+    color: var(--accent);
+    margin-bottom: -30px;
+    position: relative;
+}
+.contentContainer{
+    background: #ffff;
+    padding: 2em;
+    border-radius: 15px;
+    border: rgba(0,0,0,.1) 1px solid
+}
+.textInput{
+    padding: 8px;
+    border: rgba(0,0,0,.1) 1px solid;
+    border-radius: 10px;
+    width: 100%;
+}
+.labelForm{
+    padding: 5px;
+    font-size: 15px;
+    span{
+        display: block;
+        font-size: 11px;
+        color: #555;
+    }
+}
+.textarea{
+    @extend .textInput;
+    min-height: 200px;
+    max-height: 400px;
+}
+.formContainer{
+    @extend .contentContainer;
+    display: flex;
+    flex-wrap: wrap;
+}

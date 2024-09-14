@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 :root {
-    --accent: #ffc2d0;
-    --accent-light: #ffecf0;
+    --accent: #ffa7a6;
+    --accent-light: #ffdcdc;
     --accent-shade: #fcb6c6;
     --accent-rgb: 255, 194, 208;
-    --accent-light-rgb: 255, 236, 240;
+    --accent-light-rgb: 255, 196, 216;
     --accent-shade-rgb: 255, 151, 177;
 
 
@@ -99,7 +99,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--accent);
+    background: #333;
     -webkit-transform: scaleX(0);
     transform: scaleX(0);
     -webkit-transform-origin: 0 50%;
