@@ -1,59 +1,63 @@
 'use client'
-import React, {useState} from 'react'
+import { useRouter } from 'next/navigation'
+import React, {useEffect, useState} from 'react'
+import { db, storage } from '@/config/firebase'
+import { updateDoc, doc } from 'firebase/firestore'
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
 import style from '../../styles.module.scss'
 import Button from '../UI/Button'
-import { doc, setDoc, getDoc } from 'firebase/firestore'
-import { db, storage } from '@/config/firebase'
-import { adminNavegation } from '../utilities/actions'
-import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
-import { useRouter } from 'next/navigation'
-import ProgressBar from '../utilities/ProgressBar'
 import Image from 'next/image'
+import ProgressBar from '../utilities/ProgressBar'
 
-const createProduct = async (values, file) => {
-    
-    
-    const docRef = doc(db, 'products', values.slug)
-    return setDoc(docRef, {
-        ...values,
+
+const updateProduct = async (id, values, file) => {
+
+    const docRef = doc(db, 'products', id)
+    return updateDoc(docRef, {
+        name: values.name,
+        description: values.description,
+        price: Number(values.price),
+        stock: Number(values.stock),
+        type: values.type,
         ...file
     })
 }
 
-const CreateForm = () => {
+const EditForm = ({item}) => {
     const router = useRouter()
+    const { name, description, price, stock, type, image } = item
     const [values, setValues] = useState({
-        slug: '',
-        name: '',
-        description: '',
-        price: 0,
-        type: '',
-        stock: 0,
+        name,
+        description,
+        price,
+        stock,
+        type,
+        image
     })
-    const [file, setFile] = useState(null)
+    const [file, setFile] = useState(null);
     const [fileProgress, setFileProgress] = useState()
+    const [fileUrl, setFileUrl] = useState()
 
-    //esta función maneja los inputs del formulario
     const handleChange = (e) => {
         setValues({
             ...values,
             [e.target.name]: e.target.value
         })
     }
+
     const handleImageChange = (e) => {
         const metadata = {
             contentType: 'image/jpeg'
           };
     
           
-        const storageRef = ref(storage, 'products/' + values.type + '/' + values.slug)
+        const storageRef = ref(storage, 'products/' + values.type  + '/' + item.slug)
         const fileSnapshot = uploadBytesResumable(storageRef, e.target.files[0], metadata)
     
         fileSnapshot.on('state_changed',
             (snapshot) => {
               // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
               const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-              console.log('Upload is ' + progress + '% done');
               setFileProgress(progress)
               switch (snapshot.state) {
                 case 'paused':
@@ -85,38 +89,23 @@ const CreateForm = () => {
               getDownloadURL(fileSnapshot.snapshot.ref).then((downloadURL) => {
                 console.log('File available at', downloadURL);
                 setFile({image: downloadURL})
-                setValues({...values, image: downloadURL})
+                setFileUrl(downloadURL)
               });
             }
           );
+        }
 
-    }
     const handleSubmit = async (e) => {
         e.preventDefault()
-        await createProduct(values, file)
+        await updateProduct(item.slug, values, file)
         router.push('/admin')
     }
 
+
   return (
     <div className='container my-10'>
-        <h1 className={style.titleColor}>Crear Producto</h1>
+        <h1 className={style.titleColor}>Editar producto</h1>
         <form onSubmit={handleSubmit} className={style.contentContainer}>
-            <div className='flex flex-col mb-3'>
-                <label className={style.labelForm}>
-                    Slug
-                    <span>
-                        Nombre único del producto. No puede contener espacios, símbolos, o tildes
-                    </span>
-                </label>
-                <input
-                    type='text'
-                    value={values.slug}
-                    
-                    className={style.textInput}
-                    name='slug'
-                    onChange={handleChange}
-                />
-            </div>
 
             <div className='flex flex-col mb-3'>
                 <label className={style.labelForm}>
@@ -203,7 +192,6 @@ const CreateForm = () => {
                 />
             </div>
 
-           
             <div className='flex flex-col mb-3'>
                 <label className={style.labelForm}>
                     Imagen
@@ -211,30 +199,33 @@ const CreateForm = () => {
                         Imagen del producto
                     </span>
                 </label>
-
                 {
-                    values.image ? (
-                        <img
-                            src={values.image} 
-                            width={300} 
-                            height={300} 
-                            alt={values.name}
-                            className='mb-3'
-                        />
-                    ) : ('')
-                }
-
-                <input
-                        type='file'
-                        alt={values.name}
-                        name='image'
-                        onChange={handleImageChange}
+                    fileUrl ? (
+                        <Image
+                    src={fileUrl} 
+                    width={300} 
+                    height={300} 
+                    alt={values.name}
+                    className='mb-3'
                 />
+                    ) : (
+                        <Image
+                    src={values.image} 
+                    width={300} 
+                    height={300} 
+                    alt={values.name}
+                    className='mb-3'
+                />
+                    )
+                }
                 
 
-            </div>
-            
-           {
+            <input
+                type='file'
+                name='image'
+                onChange={handleImageChange}
+            />
+                 {
             fileProgress ? (
                 <>
                     <span className=''>
@@ -248,17 +239,18 @@ const CreateForm = () => {
                 </>
             ) : ('')
            }
+            </div>
+
            
             <div className='flex justify-end'>
                 <Button type='submit'>
-                    Crear Producto
+                    Actualizar producto
                 </Button>
             </div>
-           
-                
+
       </form>
     </div>
   )
 }
 
-export default CreateForm
+export default EditForm

@@ -13,21 +13,24 @@ const CategoriesContainer = async () => {
     })
     
   return (
-    <div className='w-full flex justify-center p-5'>
-        
+    <div className='w-full p-5'>
+        <h2 className={styles.titleColor}>categorías</h2>
+        <div className={styles.contentContainer}>
         {categories.map((menu, index) => {
                 return(
-                    <div key={index} className={styles.boxContainer}>
-                        <h2 className='text-center text-accent uppercase text-2xl font-extrabold pb-5 subtitle-line relative'>Categorias</h2>
+                    <>
+                    
+                        
                         {
                             menu.submenu ? (
-                                <Categories items={menu.submenu}/>
+                                <Categories key={index} items={menu.submenu}/>
                             ) : ('')
                         }
-                    </div>
+                    
+                    </>
                 )
             })}
-      </div>
+      </div></div>
   )
 }
 
