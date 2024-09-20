@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { useState, useEffect, useRef } from 'react';
-import { ArrowSquareDown } from 'iconsax-react';
+import { ArrowSquareDown, Menu, More } from 'iconsax-react';
 import MenuDropdown from './MenuDropdown';
 import Link from 'next/link';
 
@@ -35,10 +35,10 @@ const MenuList = ({item, depthLevel}) => {
                     aria-haspopup='menu'
                     aria-expanded={open ?  'true' : 'false'}
                     onClick={() => setOpen((prev) => !prev)}
-                    className='flex items-center'
+                    className='flex items-center bg-accent p-2 rounded-md text-white font-bold uppercase text-[11px]'
                 >
                     {item.name}{''}
-                    {depthLevel > 0 ? <span>&raquo;</span> : <span className='pl-1'><ArrowSquareDown size={13}/></span>}
+                    {depthLevel > 0 ? <span>&raquo;</span> : <span className='pl-1'><More size="15" variant="Bold"/></span>}
                 </button>
                 <MenuDropdown 
                     submenus={item.submenu}

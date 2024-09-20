@@ -5,9 +5,17 @@ const AuthContext = createContext()
 export const useAuthContext = () => useContext(AuthContext)
 
 export const AuthProvider = ({children}) => {
-    comnst [userAgent, setUser] = useState({
+    const [user, setUser] = useState({
         logged: false,
         email: null,
         uid: null
     })
+
+    return(
+        <AuthContext.Provider
+        value={{user}}
+        >
+            {children}
+        </AuthContext.Provider>
+    )
 }
