@@ -1,12 +1,6 @@
-import React from 'react'
-import Image from 'next/image'
+import { LoadingButton } from "./components/UI/buttons";
 
-const Loading = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+export default function Loading() {
 
-export default Loading
+    return <LoadingButton/>
+  }

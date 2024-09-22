@@ -2,7 +2,6 @@
 import React, { useContext, createContext, useState, useEffect } from 'react'
 
 export const CartContext = createContext()
-
 export const useCartContext = () => useContext(CartContext)
 
 export const CartProvider = ({children}) => {

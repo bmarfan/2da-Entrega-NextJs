@@ -16,7 +16,7 @@ const CartItem = ({item}) => {
         </span>
         <div className='flex gap-3'>
             <div className='relative w-[160px]'>
-                <Image src={item.image} width={200} height={200}/>
+                <Image src={item.image} width={200} height={200} alt={item.name}/>
             </div>
             <div className='bg-white p-3 w-full'>
                 <div className='font-bold mb-1 border-b border-accent text-left text-[13px] text-accent-shade leading-4 pb-1'>{item.name}</div>

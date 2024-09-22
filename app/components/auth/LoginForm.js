@@ -4,8 +4,11 @@ import style from '../../styles.module.scss'
 import Button from '../UI/Button'
 import { EmailInput, PasswordInput } from '../UI/forms'
 import { OtherButton } from '../UI/buttons'
+import { useAuthContext } from '@/app/context/AuthContext'
 
 const LoginForm = ({ position }) => {
+
+    const {registerUser, loginUser} = useAuthContext()
 
     const [values, setValues] = useState({
         email: '',
@@ -22,6 +25,7 @@ const LoginForm = ({ position }) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
     }
+    
 
     return (
         <div>
@@ -48,8 +52,8 @@ const LoginForm = ({ position }) => {
                 </section>
 
                 <section className={`mt-3 flex gap-3 justify-end ${position}`}>
-                    <OtherButton>Registrarse</OtherButton>
-                    <Button type='submit'>Log In</Button>
+                    <OtherButton onClick={() => registerUser(values)} >Registrarse</OtherButton>
+                    <Button onClick={() => loginUser(values)} >Log In</Button>
                 </section>
             </form>
 

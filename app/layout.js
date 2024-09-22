@@ -20,7 +20,7 @@ export default function RootLayout({ children, auth }) {
               <AuthProvider>
                   <CartProvider>
                       <div className="grid grid-rows-layout-principal w-full min-h-screen">
-                          <Navbar />
+                          <Navbar/>
                           <main className="w-full justify-self-center flex justify-center flex-col items-center">
                               {auth}
                               {children}
