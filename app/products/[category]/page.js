@@ -1,6 +1,5 @@
 import React, {Suspense} from 'react'
-import { dataProducts } from '@/app/dataProducts'
-import ItemListContainer from '@/app/components/products/ItemListContainer'
+import ItemListContainer from '@/components/products/ItemListContainer'
 
 export function generateStaticParams(){
     return[

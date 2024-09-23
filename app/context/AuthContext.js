@@ -4,7 +4,8 @@ import { auth } from "@/config/firebase"
 import { 
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
-    onAuthStateChanged
+    onAuthStateChanged,
+    signOut
  } from "firebase/auth"
 
  export const AuthContext = createContext()
@@ -23,7 +24,6 @@ export const AuthProvider = ({children}) => {
 
     const registerUser = async(values) => {
         const userCredentials = await createUserWithEmailAndPassword(auth, values.email, values.password)
-        console.log(userCredentials)
     
         // const user = userCredentials.user
         // setUser({
@@ -34,14 +34,14 @@ export const AuthProvider = ({children}) => {
     }
 
     const logingUser = async(values) => {
-        const userCredentials = signInWithEmailAndPassword(auth, values.email, values.password)
-        const user = userCredentials.user
+        const userCredential = await  signInWithEmailAndPassword(auth, values.email, values.password)
+        const user = userCredential.user
 
-        // setUser({
-        //     logged: true,
-        //     email: user.email,
-        //     user: user.uid
-        // })
+         setUser({
+             logged: true,
+             email: user.email,
+             user: user.uid
+         })
         
     }
     
@@ -52,22 +52,30 @@ export const AuthProvider = ({children}) => {
                 setUser({
                     logged: true,
                     email: user.email,
-                    uid: user.uid
+                    user: user.uid
                 })
-                setIsUser(true)
-              // ...
+              
             } else {
-               ''
+                setUser({
+                    logged: false,
+                    email: user.email,
+                    user: user.uid
+                })
             }
           })
     }, [])
+
+    const logout = async() => {
+        await signOut(auth)
+    }
 
     return(
         <AuthContext.Provider value={{
             user,
             isUser,
             registerUser,
-            logingUser
+            logingUser,
+            logout
         }}
         >
             {children}

@@ -1,4 +1,4 @@
-import { LoadingButton } from "./components/UI/buttons";
+import { LoadingButton } from "@/components/ui/buttons"
 
 export default function Loading() {
 

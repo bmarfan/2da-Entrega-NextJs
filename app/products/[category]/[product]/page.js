@@ -1,5 +1,5 @@
-import ItemDetailContainer from '@/app/components/products/ItemDetailContainer'
 import React from 'react'
+import ItemDetailContainer from '@/components/products/ItemDetailContainer'
 
 export async function generateStaticParams() {
     const products = await fetch('http://localhost:3000/api/products').then((res) => res.json())

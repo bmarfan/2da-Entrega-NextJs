@@ -1,5 +1,5 @@
-import LoginForm from '@/app/components/auth/LoginForm'
-import { Modal } from '@/app/components/UI/modal'
+import LoginForm from '@/components/auth/LoginForm'
+import { Modal } from '@/components/ui/modals'
 import React from 'react'
 
 const page = () => {
