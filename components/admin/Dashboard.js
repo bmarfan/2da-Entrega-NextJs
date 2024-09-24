@@ -5,10 +5,9 @@ import { Button } from '../ui/buttons'
 
 const Dashboard = () => {
     const {user, logout} = useAuthContext()
-    console.log(user)
   return (
     <div>
-      <Button onClick={() => logout}>Cerrar sesión</Button>
+      <Button onClick={() => logout()}>Cerrar sesión</Button>
     </div>
   )
 }

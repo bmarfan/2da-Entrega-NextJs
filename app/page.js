@@ -13,14 +13,12 @@ export async function generateMetadata({ params }) {
 export default function Home() {
     return (
         <>
-            <div className="grid grid-rows-layout-principal w-full min-h-screen">
-                <Navbar />
+            
                 <main className="w-full justify-self-center flex justify-center flex-col items-center">
                     <Header />
                     <CategoriesContainer />
                 </main>
-                <FooterContainer />
-            </div>
+               
 
         </>
     );

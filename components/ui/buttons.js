@@ -10,7 +10,7 @@ export const Button = ({ children, className = '', ...args }) => {
 
 export const ButtonGray = ({ children, className = '', ...args }) => {
     return (
-        <button className={`hvr-sweep-to-right bg-[#f9f9f9] py-2 px-5 text-[#333] rounded-md overflow-hidden uppercase font-bold text-[12px] h-fit ${className}`}{...args}>
+        <button className={`hvr-sweep-to-right bg-[#f9f9f9] py-2 px-5 text-[#333] rounded-md overflow-hidden uppercase font-bold text-[12px] h-fit border border-black/10 ${className}`}{...args}>
             {children}
         </button>
     )

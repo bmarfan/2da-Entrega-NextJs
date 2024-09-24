@@ -5,7 +5,6 @@ import { signup } from '@/actions/auth'
 import { TextInput, EmailInput, PasswordInput } from '../ui/forms'
 import styles from '../../styles/styles.module.scss'
 import { Button } from '../ui/buttons'
-import { auth } from '@/config/firebase'
 
 
 export function SignupForm() {
@@ -14,11 +13,12 @@ export function SignupForm() {
     return (
         <section className='container'>
             <h1 className={styles.titleColor}>Registrarse</h1>
-            <form action={signup} className={styles.contentContainer}>
+            <form action={action} className={styles.contentContainer}>
                 <TextInput
                     label='Nombre'
                     name='name'
                     placeholder='Nombre y Apellido'
+                    id='name'
                 />
                 {state?.errors?.name && <p>{state.errors.name}</p>}
 
@@ -26,6 +26,7 @@ export function SignupForm() {
                     label='Email'
                     name='email'
                     placeholder='Email'
+                    id='email'
                 />
                 {state?.errors?.email && <p>{state.errors.email}</p>}
 
@@ -33,6 +34,7 @@ export function SignupForm() {
                     label='Contraseña'
                     name='password'
                     placeholder='Contraseña'
+                    id='password'
                 />
                 {state?.errors?.password && (
                     <div>
@@ -59,7 +61,7 @@ function SubmitButton() {
 
     return (
         <Button type='submit' disabled={pending}>
-            Registrarse
+            {pending ? "Enviando..." : "Enviar"}
         </Button>
 
     )

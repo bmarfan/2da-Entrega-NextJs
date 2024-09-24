@@ -2,6 +2,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "./context/CartContext";
 import { AuthProvider } from "./context/AuthContext";
+import Navbar from "@/components/layout/navbar/Navbar";
+import FooterContainer from "@/components/layout/footer/FooterContainer";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -17,12 +19,15 @@ export default function RootLayout({ children, auth, cart }) {
             <body className={inter.className}>
                 <AuthProvider>
                     <CartProvider>
-                        
-                        
-                        <div>{auth}</div>
-                        <div>{cart}</div>
-
-                        {children}
+                        <div className="grid grid-rows-layout-principal w-full min-h-screen">
+                            <Navbar/>
+                            <main className="w-full justify-self-center flex justify-center flex-col items-center">
+                                {children}
+                                {auth}
+                                {cart}
+                            </main>
+                            <FooterContainer/>
+                        </div>
                     </CartProvider>
                 </AuthProvider>
             </body>

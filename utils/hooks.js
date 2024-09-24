@@ -1,3 +1,10 @@
+import { useAuthContext } from "@/app/context/AuthContext"
+
+export const useAuth = () =>{
+    const auth = useAuthContext()
+    return auth
+}
+
 export const usePrice = (n) => {
     let str = n.toString()
     let result = ''

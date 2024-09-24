@@ -1,5 +1,6 @@
 import { User, ShoppingCart } from "iconsax-react"
 import Link from "next/link"
+import { SignOutButton } from "./user"
 
 export const CartButton = ({ children }) => {
     
@@ -14,6 +15,16 @@ export const CartButton = ({ children }) => {
 }
 
 export const AuthButton = async({children}) => {
+
+    return (
+        <section className='flex gap-2 items-center'>
+            <User size="30" color="var(--accent-light)" variant="Bold" />
+            <SignOutButton/>
+        </section>
+    )
+}
+
+export const LoggedButton = async({children}) => {
 
     return (
         <section className='flex gap-2 items-center'>

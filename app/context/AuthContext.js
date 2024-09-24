@@ -1,50 +1,25 @@
 'use client'
 import { createContext, useContext, useEffect, useState } from "react"
 import { auth } from "@/config/firebase"
-import { 
+import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     onAuthStateChanged,
     signOut
- } from "firebase/auth"
+} from "firebase/auth"
+import { useRouter } from "next/navigation"
 
- export const AuthContext = createContext()
+export const AuthContext = createContext()
 export const useAuthContext = () => useContext(AuthContext)
 
-
-
-export const AuthProvider = ({children}) => {
+export const AuthProvider = ({ children }) => {
+    const router = useRouter()
 
     const [user, setUser] = useState({
         logged: false,
         email: null,
         uid: null
     })
-    const [isUser, setIsUser] = useState(false)
-
-    const registerUser = async(values) => {
-        const userCredentials = await createUserWithEmailAndPassword(auth, values.email, values.password)
-    
-        // const user = userCredentials.user
-        // setUser({
-        //     logged: true,
-        //     email: user.email,
-        //     user: user.uid
-        // })
-    }
-
-    const logingUser = async(values) => {
-        const userCredential = await  signInWithEmailAndPassword(auth, values.email, values.password)
-        const user = userCredential.user
-
-         setUser({
-             logged: true,
-             email: user.email,
-             user: user.uid
-         })
-        
-    }
-    
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
@@ -52,29 +27,35 @@ export const AuthProvider = ({children}) => {
                 setUser({
                     logged: true,
                     email: user.email,
-                    user: user.uid
+                    ...user
                 })
-              
+                console.log(user)
+
             } else {
+                console.log('no user')
                 setUser({
                     logged: false,
-                    email: user.email,
-                    user: user.uid
+                    email: null,
                 })
             }
-          })
+        })
     }, [])
 
-    const logout = async() => {
-        await signOut(auth)
+    const logout = () => {
+        signOut(auth).then(() => {
+            setUser({
+                logged: false,
+            })
+            router.push('/')
+            
+          }).catch((error) => {
+            console.error('No se ha podido desconectar')
+          });
     }
 
-    return(
+    return (
         <AuthContext.Provider value={{
             user,
-            isUser,
-            registerUser,
-            logingUser,
             logout
         }}
         >
