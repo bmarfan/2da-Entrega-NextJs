@@ -5,7 +5,7 @@ const Menu = async() => {
     const baseUrl = process.env.VERCEL_URL
     ? `http://${process.env.VERCEL_URL}`
     : 'http://localhost:3000'
-    const data = await fetch(`${baseUrl}/api/menu`,
+    const data = await fetch(`https://${baseUrl}/api/menu`,
         {cache: 'no-store'}
     ).then(r => r.json())
 
