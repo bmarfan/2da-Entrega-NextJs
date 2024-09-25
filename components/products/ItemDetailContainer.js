@@ -3,9 +3,8 @@ import ItemDetail from './ItemDetail'
 import { getDoc, doc } from "firebase/firestore";
 import { db } from "@/config/firebase";
 
-const ItemDetailContainer = async ({params }) => {
+const ItemDetailContainer = async ({ product, category }) => {
 
-    const { product } = params
 
     const docRef = doc(db, 'products', product)
     const docSnapshot = await getDoc(docRef)
