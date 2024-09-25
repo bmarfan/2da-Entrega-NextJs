@@ -8,7 +8,7 @@ export async function generateMetadata({ params}, parent) {
     // fetch data
     const baseUrl = process.env.VERCEL_URL
     ? `http://${process.env.VERCEL_URL}`
-    : 'http://:3000'
+    : 'http://localhost:3000'
     const product = await fetch(`${baseUrl}/api/edit/${id}`).then((res) => res.json())
    
     return {
