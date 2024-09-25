@@ -14,17 +14,7 @@ export const CartButton = ({ children }) => {
     )
 }
 
-export const AuthButton = async({children}) => {
-
-    return (
-        <section className='flex gap-2 items-center'>
-            <User size="30" color="var(--accent-light)" variant="Bold" />
-            <SignOutButton/>
-        </section>
-    )
-}
-
-export const LoggedButton = async({children}) => {
+export const AuthButton = ({children}) => {
 
     return (
         <section className='flex gap-2 items-center'>
@@ -33,6 +23,17 @@ export const LoggedButton = async({children}) => {
                 <span>Hola,</span>
                 <Link href='/login' className='font-bold'>Inicia sesión o registrate</Link>
             </div>
+        </section>
+    )
+}
+
+export const LoggedButton = ({children}) => {
+
+    return (
+        <section className='flex gap-2 items-center'>
+            <User size="30" color="var(--accent-light)" variant="Bold" />
+            <SignOutButton/>
+            
         </section>
     )
 }

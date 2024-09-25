@@ -1,9 +1,13 @@
+
 import React from 'react'
 import styles from '../../../styles/styles.module.scss'
 import Link from 'next/link'
 import Menu from './Menu'
 import CartWidget from '../../cart/CartWidget'
 import { AuthButton } from '../../ui/widgets'
+import { useAuthContext } from '@/app/context/AuthContext'
+import { LoggedButton } from '../../ui/widgets'
+import LogButton from './LogButton'
 
 
 const Navbar = () => {
@@ -14,7 +18,7 @@ const Navbar = () => {
             <Menu/>
         </section>
         <section className='flex gap-5 items-center'>
-            <AuthButton/>
+           <LogButton/>
             <CartWidget/>
         </section>
     </div>

@@ -7,11 +7,6 @@ export const SignOutButton = () => {
     const [show, setShow] = useState(false)
     const { logout, user } = useAuthContext()
 
-    const handleOpen = () => {
-        setShow(true)
-    }
-
-
     return (
         <div className='flex flex-col text-[11px] leading-3 relative' onClick={() => setShow((prev) => !prev)}>
             <span>Hola,</span>

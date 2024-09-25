@@ -10,15 +10,11 @@ export default function AdminLayout({ children }) {
     return (
         <>
             {user.logged ? router.push('/') : (
-                <>
-                    <div className="grid grid-rows-layout-principal w-full min-h-screen">
-                        <Navbar />
+               
                         <main className="w-full justify-self-center flex justify-center flex-col items-center">
                             {children}
                         </main>
-                        <FooterContainer />
-                    </div>
-                </>
+                        
             )}
 
         </>
