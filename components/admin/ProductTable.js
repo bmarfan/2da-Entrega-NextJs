@@ -9,8 +9,10 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
 const ProductTable = async () => {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL
-    const items = await fetch(`http://localhost:3000/api/products`,
+    const baseUrl = process.env.VERCEL_URL
+    ? `http://${process.env.VERCEL_URL}`
+    : 'http://localhost:3000'
+    const items = await fetch(`${baseUrl}/api/products`,
         { cache: 'no-store' }
     ).then(r => r.json())
 

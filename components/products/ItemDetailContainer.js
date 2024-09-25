@@ -2,8 +2,10 @@ import React from 'react'
 import ItemDetail from './ItemDetail'
 
 const ItemDetailContainer = async ({ product, category }) => {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL
-    const item = await fetch(`http://localhost:3000/api/products/${category}/${product}`,
+    const baseUrl = process.env.VERCEL_URL
+    ? `http://${process.env.VERCEL_URL}`
+    : 'http://localhost:3000'
+    const item = await fetch(`${baseUrl}/api/products/${category}/${product}`,
         { cache: 'no-store' }
     ).then(r => r.json())
 
