@@ -1,20 +1,12 @@
 import React from 'react'
 import EditForm from '@/components/admin/EditForm'
 
-export async function generateMetadata({ params}, parent) {
-    // read route params
-    const id = params.id
-   
-    // fetch data
-    const baseUrl = process.env.VERCEL_URL
-    ? `http://${process.env.VERCEL_URL}`
-    : 'http://localhost:3000'
-    const product = await fetch(`http://${baseUrl}/api/edit/${id}`).then((res) => res.json())
-   
+export async function generateMetadata({ params }) {
     return {
-      title: `Editar ${product.name}`,
+      title: `Edita ${params.id}`
     }
-  }
+}
+  
 
 const page = async ({ params }) => {
     const baseUrl = process.env.VERCEL_URL
