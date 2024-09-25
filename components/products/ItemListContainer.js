@@ -1,9 +1,9 @@
 import React from 'react'
 import ItemCard from './ItemCard'
 import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from '@/config/firebase';
 
-const ItemListContainer = async ({ params }) => {
-    const { category }= params
+const ItemListContainer = async ({ category }) => {
     const productsRef = collection(db, 'products')
     const q = category === 'todo' ? productsRef : query(productsRef, where('type', '==', category))
 
