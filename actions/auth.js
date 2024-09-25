@@ -1,5 +1,5 @@
 import { SignupFormSchema } from "@/lib/definitions"
-import { auth } from "../config/firebase"
+import { auth } from "@/config/firebase"
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
 
 export async function signup(state, formData) {
