@@ -1,13 +1,14 @@
 import React from 'react'
 import MenuList from './MenuList'
+import { collection, getDocs, query, where} from "firebase/firestore";
+import { db } from "@/config/firebase";
 
 const Menu = async() => {
-    const baseUrl = process.env.VERCEL_URL
-    ? `${process.env.VERCEL_URL}`
-    : 'http://localhost:3000'
-    const data = await fetch(`${baseUrl}/api/menu`,
-        {cache: 'no-store'}
-    ).then(r => r.json())
+    const menuRef = collection(db, 'menu')
+    const querySnapshot = await getDocs(menuRef)
+
+    const docs = querySnapshot.docs.map(doc => doc.data())
+    const data = docs
 
     const depthLevel = 0;
 

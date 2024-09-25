@@ -7,14 +7,16 @@ import { Edit } from 'iconsax-react'
 import DeleteButton from './DeleteButton'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import { collection, getDocs} from "firebase/firestore";
+import { db } from "@/config/firebase";
 
 const ProductTable = async () => {
-    const baseUrl = process.env.VERCEL_URL
-    ? `http://${process.env.VERCEL_URL}`
-    : 'http://localhost:3000'
-    const items = await fetch(`http://${baseUrl}/api/products`,
-        { cache: 'no-store' }
-    ).then(r => r.json())
+    const productsRef = collection(db, 'products')
+
+    const querySnapshot = await getDocs(productsRef)
+
+    const docs = querySnapshot.docs.map(doc => doc.data())
+    const items = docs
 
     return (
         <>

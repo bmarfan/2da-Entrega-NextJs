@@ -1,14 +1,17 @@
 import React from 'react'
 import ItemCard from './ItemCard'
+import { collection, getDocs, query, where } from "firebase/firestore";
 
-const ItemListContainer = async ({ category }) => {
-    const baseUrl = process.env.VERCEL_URL
-    ? `http://${process.env.VERCEL_URL}`
-    : 'http://localhost:3000'
-    const items = await fetch(`http://${baseUrl}/api/products/${category}`,
-        { cache: 'no-store' }
-    ).then(r => r.json())
+const ItemListContainer = async ({ params }) => {
+    const { category }= params
+    const productsRef = collection(db, 'products')
+    const q = category === 'todo' ? productsRef : query(productsRef, where('type', '==', category))
 
+    const querySnapshot = await getDocs(q)
+
+    const docs = querySnapshot.docs.map(doc => doc.data())
+
+    const items = docs
     return (
         <section className='relative' id='ItemListContainer'>
             <div className='bg-background2 p-3 rounded-xl'>

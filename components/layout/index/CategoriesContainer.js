@@ -1,14 +1,15 @@
 import React from 'react'
 import Categories from './Categories'
 import styles from '../../../styles/styles.module.scss'
+import { collection, getDocs} from "firebase/firestore";
+import { db } from "@/config/firebase";
 
 const CategoriesContainer = async () => {
-    const baseUrl = process.env.VERCEL_URL
-    ? `${process.env.VERCEL_URL}`
-    : 'http://localhost:3000'
-    const data = await fetch(`${baseUrl}/api/menu`,
-        { cache: 'no-store' }
-    ).then(r => r.json())
+    const menuRef = collection(db, 'menu')
+    const querySnapshot = await getDocs(menuRef)
+
+    const docs = querySnapshot.docs.map(doc => doc.data())
+    const data = docs
 
     let categories = data.filter(function (item) {
         return item.submenu
