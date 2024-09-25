@@ -12,7 +12,7 @@ const ProductTable = async () => {
     const baseUrl = process.env.VERCEL_URL
     ? `http://${process.env.VERCEL_URL}`
     : 'http://localhost:3000'
-    const items = await fetch(`https://${baseUrl}/api/products`,
+    const items = await fetch(`http://${baseUrl}/api/products`,
         { cache: 'no-store' }
     ).then(r => r.json())
 

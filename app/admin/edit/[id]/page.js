@@ -9,7 +9,7 @@ export async function generateMetadata({ params}, parent) {
     const baseUrl = process.env.VERCEL_URL
     ? `http://${process.env.VERCEL_URL}`
     : 'http://localhost:3000'
-    const product = await fetch(`https://${baseUrl}/api/edit/${id}`).then((res) => res.json())
+    const product = await fetch(`http://${baseUrl}/api/edit/${id}`).then((res) => res.json())
    
     return {
       title: `Editar ${product.name}`,
@@ -21,7 +21,7 @@ const page = async ({ params }) => {
     ? `http://${process.env.VERCEL_URL}`
     : 'http://localhost:3000'
     const { id } = params
-    const item = await fetch(`https://${baseUrl}/api/edit/${id}`,
+    const item = await fetch(`http://${baseUrl}/api/edit/${id}`,
         { cache: 'no-store' }
     ).then(r => r.json())
     return (
