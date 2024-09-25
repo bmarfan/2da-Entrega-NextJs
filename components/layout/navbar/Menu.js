@@ -2,7 +2,8 @@ import React from 'react'
 import MenuList from './MenuList'
 
 const Menu = async() => {
-    const data = await fetch('http://localhost:3000/api/menu',
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL
+    const data = await fetch(`${apiUrl}/api/menu`,
         {cache: 'no-store'}
     ).then(r => r.json())
 

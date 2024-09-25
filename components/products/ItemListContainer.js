@@ -2,7 +2,8 @@ import React from 'react'
 import ItemCard from './ItemCard'
 
 const ItemListContainer = async ({ category }) => {
-    const items = await fetch(`http://localhost:3000/api/products/${category}`,
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL
+    const items = await fetch(`${apiUrl}/api/products/${category}`,
         { cache: 'no-store' }
     ).then(r => r.json())
 
