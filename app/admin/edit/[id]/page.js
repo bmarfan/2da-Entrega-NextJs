@@ -1,21 +1,20 @@
 import React from 'react'
 import EditForm from '@/components/admin/EditForm'
+import { getDoc, doc } from "firebase/firestore";
+import { db } from "@/config/firebase";
 
 export async function generateMetadata({ params }) {
     return {
-      title: `Edita ${params.id}`
+      title: `Editar ${params.id}`
     }
 }
   
 
 const page = async ({ params }) => {
-    const baseUrl = process.env.VERCEL_URL
-    ? `http://${process.env.VERCEL_URL}`
-    : 'http://localhost:3000'
-    const { id } = params
-    const item = await fetch(`http://${baseUrl}/api/edit/${id}`,
-        { cache: 'no-store' }
-    ).then(r => r.json())
+    const {id} = params
+    const docRef = doc(db, 'products', id)
+    const docSnapshot = await getDoc(docRef)
+    const item = docSnapshot.data()
     return (
         <EditForm item={item} />
     )
