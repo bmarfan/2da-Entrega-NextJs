@@ -10,7 +10,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 
 const ProductTable = async () => {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL
-    const items = await fetch(`${apiUrl}/api/products`,
+    const items = await fetch(`http://localhost:3000/api/products`,
         { cache: 'no-store' }
     ).then(r => r.json())
 
