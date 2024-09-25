@@ -12,7 +12,7 @@ export async function generateStaticParams() {
 
   export async function generateMetadata({ params }) {
     return {
-      title: ` Cherrybooks -  ${params.product}`
+      title: `${params.product}`
     }
 }
   

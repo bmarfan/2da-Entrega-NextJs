@@ -16,6 +16,12 @@
     text-transform: uppercase;
     margin-bottom: 0px;
 }
+.titleChikito{
+    @extend .titleColor;
+    font-size: 4em;
+    text-align: left;
+    color: var(--accent);
+}
 
 //CONATINERS
 .contentContainer{
@@ -29,7 +35,10 @@
     display: flex;
     flex-wrap: wrap;
 }
-
+.previewContainer{
+    @extend .contentContainer;
+    padding: 15px;
+}
 //FORMS, INPUTS...
 .textInput{
     padding: 8px;

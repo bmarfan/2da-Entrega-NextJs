@@ -11,7 +11,7 @@ export function generateStaticParams(){
 
 export async function generateMetadata({ params }) {
     return {
-      title: ` Cherrybooks -  ${params.category}`
+      title: `${params.category}`
     }
 }
 

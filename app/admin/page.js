@@ -2,18 +2,18 @@ import React from 'react'
 import ProductTable from '@/components/admin/ProductTable'
 import Dashboard from '@/components/admin/Dashboard'
 
+export const metadata = {
+    title: 'Panel de Administración',
+    description: '...',
+  }
 
 const page = () => {
-      
-  return (
-    <>
+
+    return (
         <div className='container my-10'>
-            <Dashboard/>
-                <ProductTable/>
+            <ProductTable />
         </div>
-    </>
-    
-  )
+    )
 }
 
 export default page

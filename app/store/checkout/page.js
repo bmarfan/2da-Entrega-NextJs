@@ -1,14 +1,17 @@
-import { SignupForm } from '@/components/auth/SignupForm'
+import CheckoutForm from '@/components/store/CheckoutForm'
 import React from 'react'
 
 export const metadata = {
-    title: 'Registrarse',
+    title: 'Comprar',
     description: '...',
   }
 
 const page = () => {
+    
   return (
-    <SignupForm/>
+    <div>
+      <CheckoutForm/>
+    </div>
   )
 }
 

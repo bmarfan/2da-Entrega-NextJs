@@ -102,6 +102,7 @@ export const NumberInput = ({label, labelText, ...args}) => {
             <input
                 type='number'
                 className={styles.textInput}
+                {...args}
             />
 
         </section>

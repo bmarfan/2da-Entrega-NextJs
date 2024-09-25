@@ -12,7 +12,7 @@ import {
     FileInput,
     NumberInput
 } from '../ui/forms'
-import Button from '@/app/components/UI/Button'
+import { Button } from '../ui/buttons'
 import { ProgressBar } from '../ui/progress'
 
 
@@ -21,8 +21,8 @@ const updateProduct = async (id, values, file) => {
     return updateDoc(docRef, {
         name: values.name,
         description: values.description,
-        price: Number(values.price),
-        stock: Number(values.stock),
+        price: values.price,
+        stock: values.stock,
         type: values.type,
         ...file
     })
@@ -89,7 +89,7 @@ const EditForm = ({ item }) => {
     }
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
         await updateProduct(item.slug, values, file)
         router.push('/admin')
     }
@@ -97,7 +97,7 @@ const EditForm = ({ item }) => {
     return (
         <div className='container my-10'>
             <h1 className={styles.titleColor}>editar producto</h1>
-            <form action={handleSubmit} className={styles.contentContainer}>
+            <form onSubmit={handleSubmit} className={styles.contentContainer}>
                 <TextInput
                     label='Nombre'
                     labelText='Nombre visible del producto'
