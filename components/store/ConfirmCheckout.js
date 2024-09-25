@@ -66,7 +66,7 @@ const ConfirmCheckout = async ({ id }) => {
                             </b>
                             <span className='py-2'>
                                 $ {
-                                    usePrice(docData.total)
+                                    docData.total
                                 } 
                             </span>
                         </li>

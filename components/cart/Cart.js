@@ -35,11 +35,10 @@ const Cart = ({ position }) => {
                 <div className='flex border-t border-accent-light justify-between pt-5 items-center'>
                     <section className='py-2 flex gap-2 text-[14px] justify-end'>
                         <b className='text-accent'>Total:</b>
-                        <span>${usePrice(total())}</span>
+                        <span>${total()}</span>
                     </section>
                 </div>
                 <section className={`mt-3 flex gap-3 justify-end ${position}`}>
-
                     <Link href={'/store/checkout'}>
                         <Button>
                             Terminar la Compra
