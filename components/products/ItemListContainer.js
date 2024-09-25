@@ -5,7 +5,7 @@ const ItemListContainer = async ({ category }) => {
     const baseUrl = process.env.VERCEL_URL
     ? `http://${process.env.VERCEL_URL}`
     : 'http://localhost:3000'
-    const items = await fetch(`https://${baseUrl}/api/products/${category}`,
+    const items = await fetch(`http://${baseUrl}/api/products/${category}`,
         { cache: 'no-store' }
     ).then(r => r.json())
 
