@@ -12,7 +12,8 @@ import {
     FileInput,
     NumberInput
 } from '../ui/forms'
-import Button from '@/app/components/UI/Button'
+import { Button } from '../ui/buttons'
+import { ProgressBar } from '../ui/progress'
 
 
 const createProduct = async (values, file) => {
